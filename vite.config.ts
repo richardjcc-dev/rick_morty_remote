@@ -10,8 +10,8 @@ export default defineConfig({
       name: 'rick_morty_remote',
       filename: 'remoteEntry.js',
       exposes: {
-        './List': './src/components/List',
-        './Input': './src/components/Input',
+        './CharacterCard': './src/components/CharacterCard',
+        './CharacterSearcher': './src/components/CharacterSearcher',
       },
       shared: ['react', 'react-dom'],
     }),

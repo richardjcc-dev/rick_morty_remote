@@ -1,0 +1,45 @@
+.character-card {
+  width: 560px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+.components-container {
+  width: 1200px;
+  max-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.character-img {
+  width: 100%;
+  height: 159px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.alive-badge {
+  background-color: #e7f3d8;
+  color: #354e18;
+  display: flex;
+  align-items: center;
+  gap: 2;
+}
+
+.dead-badge {
+  background-color: #e7f3d8;
+  color: #354e18;
+  display: flex;
+  align-items: center;
+  gap: 2;
+}
+
+.unknown-badge {
+  background-color: #e7f3d8;
+  color: #354e18;
+  display: flex;
+  align-items: center;
+  gap: 2;
+}
