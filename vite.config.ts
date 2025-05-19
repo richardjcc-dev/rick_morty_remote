@@ -12,6 +12,7 @@ export default defineConfig({
       exposes: {
         './CharacterCard': './src/components/CharacterCard',
         './CharacterSearcher': './src/components/CharacterSearcher',
+        './CharactersFilters': './src/components/CharactersFilters',
       },
       shared: ['react', 'react-dom'],
     }),
