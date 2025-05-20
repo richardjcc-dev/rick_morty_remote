@@ -13,6 +13,7 @@ export default defineConfig({
         './CharacterCard': './src/components/CharacterCard',
         './CharacterSearcher': './src/components/CharacterSearcher',
         './CharactersFilters': './src/components/CharactersFilters',
+        './CharacterDetails': './src/components/CharacterDetails',
       },
       shared: ['react', 'react-dom'],
     }),

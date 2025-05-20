@@ -1,5 +1,5 @@
 import * as React from 'react';
-interface CharacterCardProps {
+interface CharacterDetailsProps {
     character: {
         name: string;
         status: string;
@@ -9,7 +9,8 @@ interface CharacterCardProps {
         origin: string;
         image: string;
     };
-    onClick: (characterData: any) => void;
+    show: boolean;
+    onHide: () => void;
 }
-declare const CharacterCard: React.FC<CharacterCardProps>;
-export default CharacterCard;
+declare const CharacterDetails: React.FC<CharacterDetailsProps>;
+export default CharacterDetails;
