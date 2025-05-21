@@ -14,7 +14,7 @@ const CharacterFilters = (props: any) => {
         className="btn btn-outline-secondary filters-btn"
         onClick={handleShow}
       >
-        <VscSettings />
+        <VscSettings className="fs-5" />
       </button>
 
       <Modal

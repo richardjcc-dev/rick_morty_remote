@@ -14,8 +14,9 @@ export default defineConfig({
         './CharacterSearcher': './src/components/CharacterSearcher',
         './CharactersFilters': './src/components/CharactersFilters',
         './CharacterDetails': './src/components/CharacterDetails',
+        './Character': './src/interfaces/Character',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'zustand'],
     }),
   ],
   build: {

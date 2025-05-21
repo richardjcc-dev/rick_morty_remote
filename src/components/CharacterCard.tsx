@@ -28,7 +28,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       <div className="row">
         <div className="col col-4 ">
           <img
-            src="https://picsum.photos/seed/picsum/200/300"
+            src={character.image}
             alt="character-img"
             className="character-img"
           />
