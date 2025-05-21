@@ -28,3 +28,4 @@ export interface ApiResponse {
   info: Info
   results: Character[]
 }
+export declare const __EXPOSE_TYPES__: {}
