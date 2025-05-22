@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { FaRegCircleCheck } from 'react-icons/fa6'
 import type { Character } from '../interfaces/Characters'
+import { BsStar, BsStarFill } from 'react-icons/bs'
+import useCharacterStore from 'rick_morty_host/characterStore'
+
 interface CharacterCardProps {
   character: Character
   onClick: (characterData: Character) => void
@@ -14,15 +17,40 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     onClick(character)
   }
 
+  const { addFavorite, removeFavorite } = useCharacterStore()
+  const isCharacterFavorite = useCharacterStore((state: any) => {
+    return state.favorites?.some((fav: any) => fav.id === character.id) || false
+  })
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (isCharacterFavorite) {
+      removeFavorite(character.id)
+    } else {
+      addFavorite(character)
+    }
+  }
+
   return (
     <section className="card shadow character-card" onClick={handleClick}>
       <div className="row">
-        <div className="col col-4 ">
+        <div className="col col-4 " style={{ position: 'relative' }}>
           <img
             src={character.image}
             alt={character.name}
             className="character-img"
           />
+          <button
+            className="favorite-icon"
+            type="button"
+            onClick={handleFavoriteClick}
+          >
+            {isCharacterFavorite ? (
+              <BsStarFill size={20} color="gold" />
+            ) : (
+              <BsStar size={20} />
+            )}
+          </button>
         </div>
         <div className="col col-8 px-3 py-3">
           <div className="row h-100">
