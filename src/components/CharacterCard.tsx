@@ -1,17 +1,9 @@
 import * as React from 'react'
 import { FaRegCircleCheck } from 'react-icons/fa6'
-// import CharacterDetails from './CharacterDetails'
+import type { Character } from '../interfaces/Characters'
 interface CharacterCardProps {
-  character: {
-    name: string
-    status: string
-    species: string
-    gender: string
-    location: string
-    origin: string
-    image: string
-  }
-  onClick: (characterData: any) => void
+  character: Character
+  onClick: (characterData: Character) => void
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
@@ -28,7 +20,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <div className="col col-4 ">
           <img
             src={character.image}
-            alt="character-img"
+            alt={character.name}
             className="character-img"
           />
         </div>
@@ -36,12 +28,16 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           <div className="row h-100">
             <div className="col col-6 d-flex flex-column justify-content-between">
               <div>
-                <h5 className="fw-normal">{character.name}</h5>
-                <p className="text-secondary">{character.species}</p>
+                <h5 className="fw-normal text-truncate">{character.name}</h5>
+                <p className="text-secondary text-truncate">
+                  {character.species}
+                </p>
               </div>
               <div>
-                <p className="mb-2 text-secondary">Last known location</p>
-                <p className="my-0">{character.location}</p>
+                <p className="mb-2 text-secondary text-truncate">
+                  Last known location
+                </p>
+                <p className="my-0 text-truncate">{character.location.name}</p>
               </div>
             </div>
             <div className="col col-6 d-flex flex-column justify-content-between">
@@ -53,7 +49,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
               </div>
               <div>
                 <p className="mb-2 text-secondary">First seen in</p>
-                <p className="my-0">{character.origin}</p>
+                <p className="my-0 text-truncate">{character.origin.name}</p>
               </div>
             </div>
           </div>

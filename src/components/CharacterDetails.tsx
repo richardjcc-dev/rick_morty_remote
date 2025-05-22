@@ -1,18 +1,11 @@
 import * as React from 'react'
 import Modal from 'react-bootstrap/Modal'
+import type { Character } from '../interfaces/Characters'
 import { FaRegCircleCheck } from 'react-icons/fa6'
 import { IoClose } from 'react-icons/io5'
 
 interface CharacterDetailsProps {
-  character: {
-    name: string
-    status: string
-    species: string
-    gender: string
-    location: string
-    origin: string
-    image: string
-  }
+  character: Character
   show: boolean
   onHide: () => void
 }
@@ -68,7 +61,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                       <span>{character.gender}</span>
 
                       <span className="fw-normal text-secondary">Origen</span>
-                      <span>{character.origin}</span>
+                      <span>{character.origin.name}</span>
 
                       <span className="fw-normal text-secondary">Estado</span>
                       <span className="badge rounded-pill alive-badge w-75 px-3 py-2">
@@ -107,11 +100,11 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
               <div className="row mt-3 ms-1">
                 <div className="col col-6">
                   <p className="mb-2 text-secondary">First seen in</p>
-                  <p className="my-0">{character.origin}</p>
+                  <p className="my-0">{character.origin.name}</p>
                 </div>
                 <div className="col col-6">
                   <p className="mb-2 text-secondary">Last known location</p>
-                  <p className="my-0">{character.location}</p>
+                  <p className="my-0">{character.location.name}</p>
                 </div>
               </div>
             </Modal.Body>

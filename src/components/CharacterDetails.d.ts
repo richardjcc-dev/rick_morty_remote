@@ -1,16 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
+import type { Character } from '../interfaces/Characters'
 interface CharacterDetailsProps {
-    character: {
-        name: string;
-        status: string;
-        species: string;
-        gender: string;
-        location: string;
-        origin: string;
-        image: string;
-    };
-    show: boolean;
-    onHide: () => void;
+  character: Character
+  show: boolean
+  onHide: () => void
 }
-declare const CharacterDetails: React.FC<CharacterDetailsProps>;
-export default CharacterDetails;
+declare const CharacterDetails: React.FC<CharacterDetailsProps>
+export default CharacterDetails
