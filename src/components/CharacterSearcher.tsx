@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState, useEffect } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import useCharacterStore from 'rick_morty_host/characterStore'
 
@@ -24,17 +24,11 @@ const CharacterSearcher = () => {
     [setNameFilter],
   )
 
-  // const handleClearSearch = useCallback(() => {
-  //   if (debounceTimeoutRef.current) {
-  //     clearTimeout(debounceTimeoutRef.current)
-  //   }
-  //   setInputValue('')
-  //   setNameFilter('')
-  // }, [setNameFilter])
-
-  // React.useEffect(() => {
-  //   setInputValue(nameFilter)
-  // }, [nameFilter])
+  useEffect(() => {
+    if (nameFilter === '') {
+      setInputValue('')
+    }
+  }, [nameFilter])
 
   return (
     <div className="input-container">
