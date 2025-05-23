@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# MicroFrontend Remoto de Rick and Morty!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene el microfrontend remoto `rick_morty_remote`, diseñado para ser consumido por un Host principal en una arquitectura de microfrontends. Provee componentes clave como el buscador de personajes, las tarjetas individuales de personajes, los filtros y la vista de detalles.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalación y Ejecución
 
-## Expanding the ESLint configuration
+Para instalar las dependencias y ejecutar el microfrontend, se deben seguir los siguientes pasos:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Clonar el repositorio:**
+   
+3.  **Instalar las dependencias:**
+    ```bash
+    npm install
+    ```
+4.  **Ejecuta el proyecto en modo desarrollo:**
+    ```bash
+    npm start
+    # o
+    yarn start
+    ```
+    Esto levantará el microfrontend en un servidor de desarrollo local, para posteriormente ser consumido por el repositorio Host.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Arquitectura del Microfrontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+`rick_morty_remote` está construido como un **módulo independiente** que expone los componentes a través de un sistema de módulos federados (Module Federation).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Sus componentes principales son:
+
+* **`CharacterSearcher`**: Un componente de UI para buscar personajes.
+* **`CharacterCard`**: Muestra la información esencial de un personaje en un formato de tarjeta.
+* **`CharactersFilters`**: Ofrece opciones para filtrar la lista de personajes.
+* **`CharacterDetails`**: Un componente para mostrar información detallada de un personaje mediante un modal.
+
+---
+
+## Dependencias Usadas
+
+Este proyecto utiliza las siguientes dependencias:
+
+* **React**: Biblioteca principal para la construcción de la interfaz de usuario.
+* **TypeScript**: Para un desarrollo más robusto y tipado estático.
+* **Webpack (con Module Federation)**: Para empaquetar la aplicación y exponer los componentes como módulos federados.
+* **React Bootstrap**: Para componentes de UI pre-estilizados.
+* **@testing-library/react**: Para probar componentes React.
+* **Jest**: El ejecutor de pruebas.
+
+---
+
+## Cómo Correr los Tests
+
+Para ejecutar las pruebas unitarias y de componentes de este microfrontend, se debe usar el siguiente comando:
+
+```bash
+npm test
