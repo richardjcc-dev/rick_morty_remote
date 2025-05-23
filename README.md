@@ -16,9 +16,7 @@ Para instalar las dependencias y ejecutar el microfrontend, se deben seguir los 
     ```
 4.  **Ejecuta el proyecto en modo desarrollo:**
     ```bash
-    npm start
-    # o
-    yarn start
+    npm run preview
     ```
     Esto levantará el microfrontend en un servidor de desarrollo local, para posteriormente ser consumido por el repositorio Host.
 
