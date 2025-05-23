@@ -23,7 +23,6 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
         onHide={onHide}
         dialogClassName="details-modal-container"
         centered
-        animation={false}
         backdrop="static"
         enforceFocus={false}
         aria-labelledby={modalTitleId}

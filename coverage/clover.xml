@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1748000333712" clover="3.2.0">
-  <project timestamp="1748000333712" name="All files">
+<coverage generated="1748008127167" clover="3.2.0">
+  <project timestamp="1748008127167" name="All files">
     <metrics statements="109" coveredstatements="91" conditionals="20" coveredconditionals="19" methods="28" coveredmethods="25" elements="157" coveredelements="135" complexity="0" loc="109" ncloc="109" packages="3" files="7" classes="7"/>
     <package name="app">
       <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -58,7 +58,7 @@
         <line num="13" count="1" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
         <line num="19" count="5" type="stmt"/>
-        <line num="124" count="1" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
       </file>
       <file name="CharacterSearcher.tsx" path="C:\Users\richi\microfrontends-rick-morty\rick_morty_remote\src\components\CharacterSearcher.tsx">
         <metrics statements="20" coveredstatements="19" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
