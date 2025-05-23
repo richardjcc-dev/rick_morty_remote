@@ -121,12 +121,15 @@ const CharacterFilters = (props: any) => {
     { value: 'Dead', label: 'Muerto' },
   ]
 
+  const modalTitleId = 'character-filters-modal-title'
+
   return (
     <>
       <button
         type="button"
         className="btn btn-outline-secondary filters-btn"
         onClick={handleShow}
+        aria-label="open-filters"
       >
         <VscSettings className="fs-5" />
       </button>
@@ -137,9 +140,10 @@ const CharacterFilters = (props: any) => {
         dialogClassName="filters-modal"
         centered
         {...props}
+        aria-labelledby={modalTitleId}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Filtros avanzados</Modal.Title>
+          <Modal.Title id={modalTitleId}>Filtros avanzados</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex flex-column gap-4">

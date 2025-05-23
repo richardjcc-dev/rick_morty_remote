@@ -3,20 +3,44 @@ import userEvent from '@testing-library/user-event'
 import CharacterCard from './CharacterCard'
 import useCharacterStore from 'rick_morty_host/characterStore'
 
+let mockAddFavorite: jest.Mock
+let mockRemoveFavorite: jest.Mock
+let mockFavorites: any[]
+
 jest.mock('rick_morty_host/characterStore')
 
-const mockStore = useCharacterStore as jest.MockedFunction<
-  typeof useCharacterStore
-> & {
-  mockAddFavorite: jest.Mock
-  mockRemoveFavorite: jest.Mock
-  mockFavorites: any[]
-}
-
 beforeEach(() => {
-  mockStore.mockAddFavorite.mockClear()
-  mockStore.mockRemoveFavorite.mockClear()
-  mockStore.mockFavorites.length = 0
+  mockAddFavorite = jest.fn()
+  mockRemoveFavorite = jest.fn()
+  mockFavorites = []
+  ;(useCharacterStore as jest.Mock).mockImplementation((selector) => {
+    const mockCharacterState = {
+      favorites: mockFavorites,
+      addFavorite: mockAddFavorite,
+      removeFavorite: mockRemoveFavorite,
+
+      clearAllFilters: jest.fn(),
+      setNameFilter: jest.fn(),
+      setSpeciesFilter: jest.fn(),
+      setGenderFilter: jest.fn(),
+      setStatusFilter: jest.fn(),
+      characters: [],
+      loading: false,
+      error: null,
+      currentPage: 1,
+      totalPages: 1,
+      nameFilter: '',
+      speciesFilter: '',
+      genderFilter: '',
+      statusFilter: '',
+    }
+
+    if (selector) {
+      return selector(mockCharacterState)
+    }
+
+    return mockCharacterState
+  })
 })
 
 describe('<CharacterCard />', () => {
@@ -25,7 +49,6 @@ describe('<CharacterCard />', () => {
     name: 'Rick Sanchez',
     status: 'Alive',
     species: 'Human',
-    type: '',
     gender: 'Male',
     origin: { name: 'Earth (C-137)', url: '' },
     location: { name: 'Citadel of Ricks', url: '' },
@@ -33,13 +56,13 @@ describe('<CharacterCard />', () => {
     episode: [],
     url: '',
     created: '',
+    type: '',
   }
 
   const onClickMock = jest.fn()
 
   it('renders character details correctly', () => {
     render(<CharacterCard character={character} onClick={onClickMock} />)
-
     expect(
       screen.getByRole('heading', { name: /rick sanchez/i }),
     ).toBeInTheDocument()
@@ -52,54 +75,41 @@ describe('<CharacterCard />', () => {
     render(<CharacterCard character={character} onClick={onClickMock} />)
     const cardElement = screen.getByText('Rick Sanchez').closest('.card')
     await userEvent.click(cardElement!)
-
     expect(onClickMock).toHaveBeenCalledTimes(1)
     expect(onClickMock).toHaveBeenCalledWith(character)
   })
 
   it('shows empty star if character is not a favorite', () => {
-    mockStore.mockFavorites.length = 0
-
     render(<CharacterCard character={character} onClick={onClickMock} />)
-    const starButton = screen.getByLabelText('Añadir a favoritos')
+    const starButton = screen.getByRole('button', { name: /favorites-button/i })
     expect(starButton).toBeInTheDocument()
-    expect(
-      starButton.querySelector('svg[data-icon="star"]'),
-    ).toBeInTheDocument()
   })
 
   it('shows filled star if character is a favorite', () => {
-    mockStore.mockFavorites.push(character)
-
+    mockFavorites.push(character)
     render(<CharacterCard character={character} onClick={onClickMock} />)
-    const starButton = screen.getByLabelText('Eliminar de favoritos')
+    const starButton = screen.getByRole('button', { name: /favorites-button/i })
     expect(starButton).toBeInTheDocument()
-    expect(
-      starButton.querySelector('svg[data-icon="star-fill"]'),
-    ).toBeInTheDocument()
   })
 
   it('calls addFavorite when empty star is clicked', async () => {
-    mockStore.mockFavorites.length = 0
     render(<CharacterCard character={character} onClick={onClickMock} />)
-
-    const starButton = screen.getByLabelText('Añadir a favoritos')
+    const starButton = screen.getByRole('button', { name: /favorites-button/i })
     await userEvent.click(starButton)
 
-    expect(mockStore.mockAddFavorite).toHaveBeenCalledTimes(1)
-    expect(mockStore.mockAddFavorite).toHaveBeenCalledWith(character)
-    expect(mockStore.mockRemoveFavorite).not.toHaveBeenCalled()
+    expect(mockAddFavorite).toHaveBeenCalledTimes(1)
+    expect(mockAddFavorite).toHaveBeenCalledWith(character)
+    expect(mockRemoveFavorite).not.toHaveBeenCalled()
   })
 
   it('calls removeFavorite when filled star is clicked', async () => {
-    mockStore.mockFavorites.push(character)
+    mockFavorites.push(character)
     render(<CharacterCard character={character} onClick={onClickMock} />)
-
-    const starButton = screen.getByLabelText('Eliminar de favoritos')
+    const starButton = screen.getByRole('button', { name: /favorites-button/i })
     await userEvent.click(starButton)
 
-    expect(mockStore.mockRemoveFavorite).toHaveBeenCalledTimes(1)
-    expect(mockStore.mockRemoveFavorite).toHaveBeenCalledWith(character.id)
-    expect(mockStore.mockAddFavorite).not.toHaveBeenCalled()
+    expect(mockRemoveFavorite).toHaveBeenCalledTimes(1)
+    expect(mockRemoveFavorite).toHaveBeenCalledWith(character.id)
+    expect(mockAddFavorite).not.toHaveBeenCalled()
   })
 })

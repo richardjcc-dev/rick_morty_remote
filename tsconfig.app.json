@@ -16,6 +16,8 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
 
     /* Linting */
     "strict": true,
@@ -25,5 +27,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "__mocks__"]
 }

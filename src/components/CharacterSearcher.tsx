@@ -37,6 +37,7 @@ const CharacterSearcher = () => {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
+        aria-label="search-character"
         className="character-searcher"
         placeholder="Buscar por nombre de personaje"
       />

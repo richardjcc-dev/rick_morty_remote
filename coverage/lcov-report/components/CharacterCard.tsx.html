@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.29% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/17</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -153,7 +153,8 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -168,25 +169,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,29 +256,29 @@ interface CharacterCardProps {
   onClick: (characterData: Character) =&gt; void
 }
 &nbsp;
-const CharacterCard: React.FC&lt;CharacterCardProps&gt; = <span class="fstat-no" title="function not covered" >({</span>
+const CharacterCard: React.FC&lt;CharacterCardProps&gt; = ({
   character,
   onClick,
 }) =&gt; {
-  const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    onClick(character)</span>
+  const handleClick = () =&gt; {
+    onClick(character)
   }
 &nbsp;
-  const { addFavorite, removeFavorite } = <span class="cstat-no" title="statement not covered" >useCharacterStore()</span>
-  const isCharacterFavorite = <span class="cstat-no" title="statement not covered" >useCharacterStore(<span class="fstat-no" title="function not covered" >(s</span>tate: any) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return state.favorites?.some(<span class="fstat-no" title="function not covered" >(f</span>av: any) =&gt; <span class="cstat-no" title="statement not covered" >fav.id === character.id)</span> || false</span>
+  const { addFavorite, removeFavorite } = useCharacterStore()
+  const isCharacterFavorite = useCharacterStore((state: any) =&gt; {
+    return state.favorites?.some((fav: any) =&gt; fav.id === character.id) || false
   })
 &nbsp;
-  const handleFavoriteClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>: React.MouseEvent) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    e.stopPropagation()</span>
-<span class="cstat-no" title="statement not covered" >    if (isCharacterFavorite) {</span>
-<span class="cstat-no" title="statement not covered" >      removeFavorite(character.id)</span>
+  const handleFavoriteClick = (e: React.MouseEvent) =&gt; {
+    e.stopPropagation()
+    if (isCharacterFavorite) {
+      removeFavorite(character.id)
     } else {
-<span class="cstat-no" title="statement not covered" >      addFavorite(character)</span>
+      addFavorite(character)
     }
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;section className="card shadow character-card" onClick={handleClick}&gt;
       &lt;div className="row"&gt;
         &lt;div className="col col-4 " style={{ position: 'relative' }}&gt;
@@ -287,6 +289,7 @@ const CharacterCard: React.FC&lt;CharacterCardProps&gt; = <span class="fstat-no"
           /&gt;
           &lt;button
             className="favorite-icon"
+            aria-label="favorites-button"
             type="button"
             onClick={handleFavoriteClick}
           &gt;
@@ -340,7 +343,7 @@ export default CharacterCard
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-22T19:05:17.293Z
+                at 2025-05-23T11:38:53.649Z
             </div>
         <script src="../prettify.js"></script>
         <script>

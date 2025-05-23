@@ -15,6 +15,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
   show,
   onHide,
 }) => {
+  const modalTitleId = `character-details-modal-title-${character.id}`
   return (
     <>
       <Modal
@@ -22,6 +23,10 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
         onHide={onHide}
         dialogClassName="details-modal-container"
         centered
+        animation={false}
+        backdrop="static"
+        enforceFocus={false}
+        aria-labelledby={modalTitleId}
       >
         <div className="details-modal-content card">
           <Modal.Header className="character-details-header mt-0 mx-0">
@@ -30,6 +35,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                 type="button"
                 className="btn btn-light close-btn"
                 onClick={onHide}
+                aria-label="close-details"
               >
                 <IoClose className="fs-4 text-secondary" />
               </button>
@@ -41,13 +47,13 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                 <div>
                   <img
                     src={character.image}
-                    alt="character-img"
+                    alt={`${character.name} image`}
                     className="character-details-img"
                   />
                 </div>
                 <div>
-                  <Modal.Title className="fw-bold">
-                    {character.name}
+                  <Modal.Title id={modalTitleId} className="fw-bold">
+                    <h4 role="heading">{character.name}</h4>
                   </Modal.Title>
                   <p>{character.species}</p>
                 </div>

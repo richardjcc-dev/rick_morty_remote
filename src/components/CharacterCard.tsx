@@ -42,6 +42,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           />
           <button
             className="favorite-icon"
+            aria-label="favorites-button"
             type="button"
             onClick={handleFavoriteClick}
           >

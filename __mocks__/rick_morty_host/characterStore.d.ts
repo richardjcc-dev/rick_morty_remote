@@ -1,0 +1,20 @@
+declare const useCharacterStore: jest.Mock<{
+    favorites: never[];
+    addFavorite: jest.Mock<any, any, any>;
+    removeFavorite: jest.Mock<any, any, any>;
+    clearAllFilters: jest.Mock<any, any, any>;
+    setNameFilter: jest.Mock<any, any, any>;
+    setSpeciesFilter: jest.Mock<any, any, any>;
+    setGenderFilter: jest.Mock<any, any, any>;
+    setStatusFilter: jest.Mock<any, any, any>;
+    characters: never[];
+    loading: boolean;
+    error: null;
+    currentPage: number;
+    totalPages: number;
+    nameFilter: string;
+    speciesFilter: string;
+    genderFilter: string;
+    statusFilter: string;
+}, [], any>;
+export default useCharacterStore;
