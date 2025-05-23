@@ -33,8 +33,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <section className="card shadow character-card" onClick={handleClick}>
-      <div className="row">
-        <div className="col col-4 " style={{ position: 'relative' }}>
+      <div className="row d-flex flex-wrap">
+        <div
+          className="col col-md-4 col-lg-4 col-xl-4"
+          style={{ position: 'relative' }}
+        >
           <img
             src={character.image}
             alt={character.name}
@@ -53,7 +56,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
             )}
           </button>
         </div>
-        <div className="col col-8 px-3 py-3">
+        <div className="col col-md-8 col-lg-8 col-xl-8 px-3 py-3">
           <div className="row h-100">
             <div className="col col-6 d-flex flex-column justify-content-between">
               <div>
