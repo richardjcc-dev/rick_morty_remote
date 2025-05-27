@@ -14,7 +14,11 @@ Para instalar las dependencias y ejecutar el microfrontend, se deben seguir los 
     ```bash
     npm install
     ```
-4.  **Ejecuta el proyecto en modo desarrollo:**
+4.  **Ejecutar el build del proyecto:**
+    ```bash
+    npm run build
+    ```
+5.  **Ejecutar el proyecto en modo desarrollo:**
     ```bash
     npm run preview
     ```
